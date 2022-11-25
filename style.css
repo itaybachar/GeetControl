@@ -1,0 +1,13 @@
+html,
+body {
+    overflow: hidden;
+    position: fixed;
+    -webkit-overflow-scrolling: touch;
+    resize: none;
+}
+
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(128, 128, 128);
+    font-size: xx-large;
+}
