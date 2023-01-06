@@ -1,0 +1,5 @@
+routes = {
+    '/': {
+        "pages" : "index.html"
+    },
+}
