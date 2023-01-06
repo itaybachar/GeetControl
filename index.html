@@ -1,34 +1,40 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <meta name="viewport"
+        content="width=device-width,  initial-scale=1, maximum-scale=1, user-scalable=0,user-scalable=no, viewport-fit=cover">
+        <meta name="HandheldFriendly" content="true" />
 
-<head>
-    <title>
-        Geet Control
-    </title>
-    <meta name="viewport" content="user-scalable=no">
-    <script src="common.js"></script>
-    <link rel="stylesheet" href="style.css">
-</head>
+        <script src="scripts/touchpad.js"></script>
+        <link rel="stylesheet" href="styles/controller.css">
+    </head>
 
-<body scroll="no">
-    <div id="connect-device">
-        <select id="device-list">
-            <option value="none">Fetching Connected Devices</option>
-        </select>
-        <button onclick="connectDevice()">Connect</button>
-    </div>
-    <div id="controller" hidden>
-        <h1 style="text-align:center">
-            MOUSEBOT </h1>
-        <button onclick="closeConnection()">Close Here</button>
-        <p style="text-align: center;">
-            X: <span id="x_coordinate"> </span>
-            Y: <span id="y_coordinate"> </span>
-            Speed: <span id="speed"> </span> %
-            Angle: <span id="angle"> </span>
-        </p>
-        <canvas id="canvas" name="game"></canvas>
-    </div>
-</body>
-
+    <body style="overflow: hidden;">
+        <div class="status-area page-element">
+            <div class="status-light"></div>
+        </div>
+        <div class="utility-area page-element">
+            <div class="two-button-rocker"></div>
+            <div class="quick-actions">
+                <div class="qa-button"></div>
+                <div class="qa-button"></div>
+                <div class="qa-button"></div>
+                <div class="qa-button"></div>
+            </div>
+            <div class="two-button-rocker">
+                <button>+</button>
+                <button>-</button>
+            </div>
+        </div>
+        
+        <div class="keyboard-area page-element">
+            <input id="keypad" type="text" placeholder="Keyboard">
+        </div>
+        
+        <div id="touchpad" class="touch-area page-element"></div>
+        <button id="log" onclick="enableLog(event);">Start/Stop event logging</button>
+        <button id="clearlog" onclick="clearLog(event);">Clear the log</button>
+        <p></p>
+        <output></output>
+    </body>
 </html>
