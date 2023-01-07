@@ -36,5 +36,4 @@ class RemoteControlHandler(RequestHandler):
         self.controller_manager = ControllerManager()
     
     def writeAction(self, action):
-        #add action checking
         self.controller_manager.add(action)

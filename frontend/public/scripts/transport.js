@@ -12,8 +12,6 @@ async function send(path, data, method = 'GET') {
         },
         body: (method === 'POST') ? JSON.stringify(data): undefined
     })).text();
-
-    console.log(res);
 }
 
 async function typeKey(key){
@@ -25,11 +23,12 @@ async function typeKey(key){
     send('/keyboard',data,'POST');
 }
 
-async function mouseMove(xVel, yVel) {
+async function mouseMove(dx, dy, force) {
     data = {
         'action': 'mouse-move',
-        'dx': xVel,
-        'dy': yVel
+        'dx': dx.toFixed(1),
+        'dy': dy.toFixed(1),
+        'force': force.toFixed(1),
     };
 
     send('/mouse',data,'POST');

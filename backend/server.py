@@ -15,7 +15,7 @@ class Server(BaseHTTPRequestHandler):
     def do_POST(self):
         if self.path in post_routes:
             post_data = json.loads(self.rfile.read(int(self.headers['Content-Length'])).decode("utf-8"))
-            print("GOT POST: " + json.dumps(post_data))
+            # print("GOT POST: " + json.dumps(post_data))
 
             if post_data.get('op',None) == 'remote':
                 remote_data = post_data.get('data',None)
@@ -77,3 +77,6 @@ class Server(BaseHTTPRequestHandler):
     def respond(self, opts):
         content = self.handle_http(opts['handler'])
         self.wfile.write(content)
+
+    def log_message(self, format, *args):
+        return

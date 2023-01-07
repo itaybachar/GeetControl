@@ -7,8 +7,6 @@ function init_keypad() {
 
 function keyTyped(e) {
     e.preventDefault();
-    console.log(e)
-
     //Take key code and send it
     typeKey(e.key)
     return false;
