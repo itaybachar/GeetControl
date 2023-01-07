@@ -1,7 +1,7 @@
 import os
 
 from http.server import BaseHTTPRequestHandler
-from routes.main import routes
+from routes.main import routes, post_routes
 from response.pageHandler import PageHandler
 from response.badRequestHandler import BadRequestHandler
 from response.staticHandler import StaticHandler
@@ -13,13 +13,21 @@ class Server(BaseHTTPRequestHandler):
     def do_HEAD(self):
         return
     def do_POST(self):
-        print(self.path)
+        if self.path in post_routes:
+            post_data = json.loads(self.rfile.read(int(self.headers['Content-Length'])).decode("utf-8"))
+            print("GOT POST: " + json.dumps(post_data))
 
-        post_data = json.loads(self.rfile.read(int(self.headers['Content-Length'])).decode("utf-8"))
-        print("GOT POST: " + json.dumps(post_data))
-
-        handler = RemoteControlHandler()
-        handler.writeAction(post_data)
+            if post_data.get('op',None) == 'remote':
+                remote_data = post_data.get('data',None)
+                if remote_data is None:
+                    handler = BadRequestHandler()
+                else:
+                    handler = RemoteControlHandler()
+                    handler.writeAction(remote_data)    
+            else: 
+                handler = BadRequestHandler()
+        else:
+            handler = BadRequestHandler()
 
         self.respond({
             'handler': handler 

@@ -1,12 +1,7 @@
-async function send(path, data, method = 'GET') {
-    const res = await (await fetch(`${path}`, {
-        method: method,
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: (method === 'POST') ? JSON.stringify(data): undefined
-    })).text()
-
-    console.log(res)
+function init_controller() {
+    init_keypad()
+    init_touchpad()
+    init_utility_buttons()
 }
+
+window.onload = init_controller

@@ -34,5 +34,5 @@ class StaticHandler(RequestHandler):
             return False
     
     def setContentType(self, ext):
-        self.content_type = self.filetypes[ext]
+        self.content_type = self.filetypes.get(ext,"notfound")
 

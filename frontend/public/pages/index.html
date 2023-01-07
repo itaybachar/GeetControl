@@ -6,8 +6,13 @@
         <meta name="HandheldFriendly" content="true" />
 
         <script src="scripts/common.js"></script>
+        <script src="scripts/transport.js"></script>
 
         <script src="scripts/touchpad.js"></script>
+        <script src="scripts/keyboard.js"></script>
+        <script src="scripts/util-buttons.js"></script>
+
+
         <link rel="stylesheet" href="styles/controller.css">
     </head>
 
@@ -17,14 +22,14 @@
         </div>
         <div class="utility-area page-element">
             <div class="grid">
-                    <div class="qa-button1 qa"><img src="res/Netflix.png"></div>
-                    <div class="qa-button2 qa"><img class="right" src="res/Hulu.png"></div>
-                    <div class="qa-button3 qa"><img src="res/HBO.png"></div>
-                    <div class="qa-button4 qa"><img class="right" src="res/Crunchy.png"></div>
+                    <div data-action='netflix' class="qa-button1 qa"><img src="res/Netflix.png"></div>
+                    <div data-action='hulu' class="qa-button2 qa"><img class="right" src="res/Hulu.png"></div>
+                    <div data-action='hbo' class="qa-button3 qa"><img src="res/HBO.png"></div>
+                    <div data-action='crunchyroll' class="qa-button4 qa"><img class="right" src="res/Crunchy.png"></div>
 
                 <div class="two-button-rocker">
-                    <button>+</button>
-                    <button>-</button>
+                    <button id="v-up">+</button>
+                    <button id="v-down">-</button>
                 </div>
             </div>
         </div>
