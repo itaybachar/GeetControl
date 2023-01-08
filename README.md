@@ -17,4 +17,4 @@ Application to remotely control your computer from a browser
 ### Notes
 - To click, just tap the mouse pad
 - The utility buttons(netflix, etc..) are not working yet.
-- There is no way to scroll or right click yet.
+- There is no way to right click yet.
