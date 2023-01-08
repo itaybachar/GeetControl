@@ -10,12 +10,13 @@ import json
 keyboard = kbctl.Controller()
 mouse = msctl.Controller()
 
+
 class ControllerManager:
     _instance = None
 
     def __new__(cls):
         if cls._instance is None:
-            cls._instance = super(ControllerManager,cls).__new__(cls)
+            cls._instance = super(ControllerManager, cls).__new__(cls)
             cls._instance.__initialized = False
         return cls._instance
 
@@ -29,23 +30,28 @@ class ControllerManager:
     def add(self, action):
         self.remote_action_queue.put(action)
 
-        if (type(self.worker) is Thread and self.worker.is_alive() is False) or self.worker is None:
+        if (
+            type(self.worker) is Thread and self.worker.is_alive() is False
+        ) or self.worker is None:
             self.worker = Thread(target=self.__processActions, daemon=True)
             self.worker.start()
-    
+
     def __processActions(self):
         while self.remote_action_queue.qsize() > 0:
             instruction = self.remote_action_queue.get()
-            action = instruction.get('action',None)
+            action = instruction.get("action", None)
             if action == "keyboard":
-                typeKey(instruction['key'])
+                typeKey(instruction["key"])
             elif action == "volume":
-                changeVolume(instruction['change'])
+                changeVolume(instruction["change"])
             elif action == "mouse-click":
-                mouseClick(instruction['btn'])
+                mouseClick(instruction["btn"])
             elif action == "mouse-move":
-                mouseMove(instruction['dx'],instruction['dy'],instruction['force'])
+                mouseMove(instruction["dx"], instruction["dy"], instruction["force"])
+            elif action == "mouse-scroll":
+                scrollWheel(instruction["direction"])
             # print(json.dumps(instruction))
+
 
 def typeKey(key):
     try:
@@ -60,6 +66,7 @@ def typeKey(key):
     except:
         pass
 
+
 def changeVolume(change):
     try:
         if change == "UP":
@@ -69,22 +76,35 @@ def changeVolume(change):
     except:
         pass
 
+
 def mouseClick(btn):
     try:
         if btn == "left":
-            mouse.click(msctl.Button.left,1)
+            mouse.click(msctl.Button.left, 1)
     except:
         pass
 
-def mouseMove(dx,dy,force):
+
+def mouseMove(dx, dy, force):
     try:
-        #Convert POST values to floats
+        # Convert POST values to floats
         dx = float(dx)
         dy = float(dy)
         force = float(force)
 
-        #Get current Mouse position
-        mouse.move(dx*force,dy*force)
+        # Get current Mouse position
+        mouse.move(dx * force, dy * force)
         sleep(0.001)
+    except:
+        pass
+
+
+# UP/ DOWN
+def scrollWheel(direction):
+    try:
+        if direction == "UP":
+            mouse.scroll(0, 2)
+        elif direction == "DOWN":
+            mouse.scroll(0, -2)
     except:
         pass

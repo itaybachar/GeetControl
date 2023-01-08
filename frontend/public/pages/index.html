@@ -1,47 +1,53 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport"
+
+<head>
+    <meta name="viewport"
         content="width=device-width,  initial-scale=1, maximum-scale=1, user-scalable=0,user-scalable=no, viewport-fit=cover">
-        <meta name="HandheldFriendly" content="true" />
+    <meta name="HandheldFriendly" content="true" />
 
-        <script src="scripts/common.js"></script>
-        <script src="scripts/transport.js"></script>
+    <script src="scripts/common.js"></script>
+    <script src="scripts/transport.js"></script>
 
-        <script src="scripts/touchpad.js"></script>
-        <script src="scripts/keyboard.js"></script>
-        <script src="scripts/util-buttons.js"></script>
+    <script src="scripts/touchpad.js"></script>
+    <script src="scripts/keyboard.js"></script>
+    <script src="scripts/util-buttons.js"></script>
 
 
-        <link rel="stylesheet" href="styles/controller.css">
-    </head>
+    <link rel="stylesheet" href="styles/controller.css">
+</head>
 
-    <body style="overflow: hidden;">
-        <div class="status-area page-element">
-            <div class="status-light"></div>
-        </div>
-        <div class="utility-area page-element">
-            <div class="grid">
-                    <div data-action='netflix' class="qa-button1 qa"><img src="res/Netflix.png"></div>
-                    <div data-action='hulu' class="qa-button2 qa"><img class="right" src="res/Hulu.png"></div>
-                    <div data-action='hbo' class="qa-button3 qa"><img src="res/HBO.png"></div>
-                    <div data-action='crunchyroll' class="qa-button4 qa"><img class="right" src="res/Crunchy.png"></div>
+<body style="overflow: hidden;">
+    <div class="status-area page-element">
+        <div class="status-light"></div>
+    </div>
+    <div class="utility-area page-element">
+        <div class="grid">
+            <div data-action='netflix' class="qa-button1 qa"><img src="res/Netflix.png"></div>
+            <div data-action='hulu' class="qa-button2 qa"><img class="right" src="res/Hulu.png"></div>
+            <div data-action='hbo' class="qa-button3 qa"><img src="res/HBO.png"></div>
+            <div data-action='crunchyroll' class="qa-button4 qa"><img class="right" src="res/Crunchy.png"></div>
 
-                <div class="two-button-rocker">
-                    <button id="v-up">+</button>
-                    <button id="v-down">-</button>
-                </div>
+            <div class="two-button-rocker left">
+                <button id="scroll-up">/\</button>
+                <button id="scroll-down">\/</button>
+            </div>
+            <div class="two-button-rocker right">
+                <button id="v-up">+</button>
+                <button id="v-down">-</button>
             </div>
         </div>
-        
-        <div class="keyboard-area page-element">
-            <input id="keypad" type="text" placeholder="Keyboard">
-        </div>
-        
-        <div id="touchpad" class="touch-area page-element"></div>
-        <!-- <button id="log" onclick="enableLog(event);">Start/Stop event logging</button>
+    </div>
+
+    <div class="keyboard-area page-element">
+        <input id="keypad" type="text" placeholder="Keyboard">
+    </div>
+
+    <div id="touchpad" class="touch-area page-element"></div>
+    <!-- <button id="log" onclick="enableLog(event);">Start/Stop event logging</button>
         <button id="clearlog" onclick="clearLog(event);">Clear the log</button>
         <p></p>
         <output></output> -->
-    </body>
+</body>
+
 </html>

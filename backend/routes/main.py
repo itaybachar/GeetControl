@@ -1,12 +1,11 @@
 routes = {
-    '/': {
-        "pages" : "index.html"
-    },
+    "/": {"pages": "index.html"},
 }
 
 post_routes = (
     "/mouse",
     "/keyboard",
     "/volume",
-    "/quick-action"
+    "/quick-action",
+    "/scroll",
 )

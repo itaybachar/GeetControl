@@ -1,4 +1,5 @@
-async function send(path, data, method = 'GET') {
+async function send(path, data, method = 'GET')
+{
     data = {
         'op': 'remote',
         'data': data
@@ -10,20 +11,22 @@ async function send(path, data, method = 'GET') {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: (method === 'POST') ? JSON.stringify(data): undefined
+        body: (method === 'POST') ? JSON.stringify(data) : undefined
     })).text();
 }
 
-async function typeKey(key){
+async function typeKey(key)
+{
     data = {
-        'action' : 'keyboard',
+        'action': 'keyboard',
         'key': key
     };
 
-    send('/keyboard',data,'POST');
+    send('/keyboard', data, 'POST');
 }
 
-async function mouseMove(dx, dy, force) {
+async function mouseMove(dx, dy, force)
+{
     data = {
         'action': 'mouse-move',
         'dx': dx.toFixed(1),
@@ -31,7 +34,7 @@ async function mouseMove(dx, dy, force) {
         'force': force.toFixed(1),
     };
 
-    send('/mouse',data,'POST');
+    send('/mouse', data, 'POST');
 }
 
 async function mouseClick(mouseKey = "left")
@@ -41,12 +44,14 @@ async function mouseClick(mouseKey = "left")
         'btn': mouseKey
     };
 
-    send('/mouse',data,'POST');
+    send('/mouse', data, 'POST');
 }
 
-async function volumeRocker(change){
-    data = {'action': 'volume'};
-    switch(change) {
+async function volumeRocker(change)
+{
+    data = { 'action': 'volume' };
+    switch (change)
+    {
         case "+":
             data['change'] = 'UP';
             break;
@@ -56,14 +61,32 @@ async function volumeRocker(change){
         default:
             return
     }
-    send('volume',data,'POST');
+    send('volume', data, 'POST');
 }
 
-async function sendQuickAction(action) {
+async function sendQuickAction(action)
+{
     data = {
         'action': 'quick-action',
         'service': action
     };
 
-    send('/quick-action',data,'POST');
+    send('/quick-action', data, 'POST');
+}
+
+async function scrollWheel(direction)
+{
+    data = { 'action': 'mouse-scroll' }
+    switch (direction)
+    {
+        case "up":
+            data['direction'] = 'UP';
+            break;
+        case "down":
+            data['direction'] = 'DOWN';
+            break;
+        default:
+            return
+    }
+    send('/scroll', data, 'POST');
 }
