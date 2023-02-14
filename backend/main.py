@@ -1,6 +1,12 @@
 import time
 from http.server import HTTPServer
 from server import Server
+from qrdisp import QRDisplay
+
+qr = QRDisplay()
+qr.display()
+
+#Get IP address for computer on network
 
 HOST_NAME = ''
 PORT_NUMBER = 8000
