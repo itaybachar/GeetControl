@@ -81,6 +81,8 @@ def mouseClick(btn):
     try:
         if btn == "left":
             mouse.click(msctl.Button.left, 1)
+        elif btn == "right":
+            mouse.click(msctl.Button.right,1)
     except:
         pass
 
