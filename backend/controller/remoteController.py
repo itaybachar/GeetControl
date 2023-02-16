@@ -7,6 +7,8 @@ import pynput.mouse as msctl
 
 import json
 
+import webbrowser
+
 keyboard = kbctl.Controller()
 mouse = msctl.Controller()
 
@@ -50,6 +52,8 @@ class ControllerManager:
                 mouseMove(instruction["dx"], instruction["dy"], instruction["force"])
             elif action == "mouse-scroll":
                 scrollWheel(instruction["direction"])
+            elif action == "quick-action":
+                quickAction(instruction["service"])
             # print(json.dumps(instruction))
 
 
@@ -66,7 +70,7 @@ def typeKey(key):
     except:
         pass
 
-
+# webbrowser.open("https://google.com",new=2)
 def changeVolume(change):
     try:
         if change == "UP":
@@ -108,5 +112,17 @@ def scrollWheel(direction):
             mouse.scroll(0, 2)
         elif direction == "DOWN":
             mouse.scroll(0, -2)
+    except:
+        pass
+
+def quickAction(service):
+    service_map = {
+        "hbo": "https://www.hbomax.com",
+        "netflix": "https://www.netflix.com",
+        "hulu": "https://www.hulu.com",
+        "crunchyroll": "https://www.crunchyroll.com"
+    }
+    try:
+        webbrowser.open(service_map[service],new=2)
     except:
         pass
