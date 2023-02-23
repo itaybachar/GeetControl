@@ -7,6 +7,7 @@ function init_touchpad()
 // Touch Point cache
 var tpCache = new Array();
 var rightClick = false;
+var moving = false;
 function start_handler(ev)
 {
   for (var i = 0; i < ev.targetTouches.length; i++)
@@ -32,6 +33,7 @@ function move_handler(ev)
 
   if (ev.touches.length == 1)
   {
+    moving = true;
     var diffX = ev.targetTouches[0].clientX - prevX;
     var diffY = ev.targetTouches[0].clientY - prevY;
     var magnitude = Math.sqrt(diffX * diffX + diffY * diffY)
@@ -57,6 +59,11 @@ function end_handler(ev)
     prevX = undefined;
     prevY = undefined;
 
+    if (moving)
+    {
+      moving = false;
+      return;
+    }
     if (rightClick)
     {
       mouseClick('right')
