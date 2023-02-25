@@ -1,6 +1,10 @@
 import os
 
 from backend.response.requestHandler import RequestHandler
+from importlib import resources
+with resources.path('frontend.public', '') as data_path:
+    default_config_path = data_path
+
 
 class StaticHandler(RequestHandler):
     def __init__(self):
@@ -21,9 +25,9 @@ class StaticHandler(RequestHandler):
                 raise Exception("Bad URL")
             
             if extension in (".jpg", ".jpeg", ".png"):
-                self.contents = open("../frontend/public{}".format(file_path), 'rb')
+                self.contents = open('{}/{}'.format(default_config_path,file_path), 'rb')
             else:
-                self.contents = open("../frontend/public{}".format(file_path), 'r')
+                self.contents = open('{}/{}'.format(default_config_path,file_path), 'r')
             
             self.setContentType(extension)
             self.setStatus(200)
