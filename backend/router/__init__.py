@@ -1,0 +1,1 @@
+from backend.router.main import routes, post_routes

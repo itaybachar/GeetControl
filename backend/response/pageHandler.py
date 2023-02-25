@@ -1,4 +1,4 @@
-from response.requestHandler import RequestHandler
+from backend.response.requestHandler import RequestHandler
 
 class PageHandler(RequestHandler):
     def __init__(self):

@@ -1,0 +1,4 @@
+from backend.response.pageHandler import PageHandler
+from backend.response.badRequestHandler import BadRequestHandler
+from backend.response.staticHandler import StaticHandler
+from backend.response.actionHandler import InfoHandler, RemoteControlHandler

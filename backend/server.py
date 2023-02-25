@@ -1,11 +1,8 @@
 import os
 
 from http.server import BaseHTTPRequestHandler
-from routes.main import routes, post_routes
-from response.pageHandler import PageHandler
-from response.badRequestHandler import BadRequestHandler
-from response.staticHandler import StaticHandler
-from response.actionHandler import InfoHandler, RemoteControlHandler
+from backend.response import *
+from backend.router import routes, post_routes
 
 import json
 

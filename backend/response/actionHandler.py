@@ -2,8 +2,8 @@ import socket
 import json
 import io
 
-from response.requestHandler import RequestHandler
-from controller.remoteController import ControllerManager
+from backend.response.requestHandler import RequestHandler
+from backend.controller.remoteController import ControllerManager
 
 class InfoHandler(RequestHandler):
     def __init__(self):

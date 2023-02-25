@@ -1,17 +1,18 @@
 import time
 from http.server import HTTPServer
-from server import Server
-from qrdisp import QRDisplay
-
-qr = QRDisplay()
-qr.display()
+from backend.server import Server
+# import server
+from backend.qrdisp import QRDisplay
 
 #Get IP address for computer on network
 
-HOST_NAME = ''
-PORT_NUMBER = 8000
+def main():
+    qr = QRDisplay()
+    qr.display()
 
-if __name__ == '__main__':
+    HOST_NAME = ''
+    PORT_NUMBER = 8000
+
     httpd = HTTPServer((HOST_NAME, PORT_NUMBER), Server)
     print(time.asctime(), 'Server up - %s:%s' % (HOST_NAME, PORT_NUMBER))
     try:
@@ -21,3 +22,6 @@ if __name__ == '__main__':
 
     httpd.server_close()
     print(time.asctime(), 'Server down - %s:%s' % (HOST_NAME,PORT_NUMBER))
+
+if __name__ == '__main__':
+    main()

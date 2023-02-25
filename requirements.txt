@@ -1,2 +1,5 @@
+Pillow==9.4.0
 pynput==1.7.6
+pypng==0.20220715.0
+PyQRCode==1.2.1
 six==1.16.0

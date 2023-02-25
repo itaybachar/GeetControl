@@ -1,6 +1,6 @@
 import os
 
-from response.requestHandler import RequestHandler
+from backend.response.requestHandler import RequestHandler
 
 class StaticHandler(RequestHandler):
     def __init__(self):
