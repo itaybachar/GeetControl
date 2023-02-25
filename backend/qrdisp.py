@@ -4,13 +4,15 @@ import png
 from pyqrcode import QRCode
 
 from PIL import Image
-
+from importlib import resources
+with resources.path('frontend.public', 'pages') as data_path:
+    default_config_path = data_path
 
 class QRDisplay:
     def __init__(self):
         #Find the IP of the computer
         self.ip = ''
-        self.imgURL = 'temp.png'
+        self.imgURL = '{}/temp.png'.format(default_config_path)
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         try:
             # doesn't even have to be reachable
