@@ -1,7 +1,8 @@
 import socket
 import pyqrcode
-import png
-from pyqrcode import QRCode
+
+# import png
+# from pyqrcode import QRCode
 
 from PIL import Image
 from importlib import resources
@@ -12,6 +13,7 @@ class QRDisplay:
     def __init__(self):
         #Find the IP of the computer
         self.ip = ''
+        self.img = ''
         self.imgURL = '{}/temp.png'.format(default_config_path)
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         try:
@@ -25,9 +27,10 @@ class QRDisplay:
         
         #Generate QR Code file
         url = pyqrcode.create(self.ip)
-        url.png(self.imgURL, scale = 6)
+        url.png(self.imgURL, scale = 15)
     
     def display(self):
-        img = Image.open(self.imgURL)
-        img.show() 
+        self.img = Image.open(self.imgURL)
+        self.img.show(title="Scan Me!")
+
                 

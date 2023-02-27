@@ -35,7 +35,7 @@ class Server(BaseHTTPRequestHandler):
         split_path = os.path.splitext(self.path)
         req_extension = split_path[1]
 
-        if req_extension is "" or req_extension is ".html":
+        if req_extension == "" or req_extension == ".html":
             if self.path in routes:
                 handler = PageHandler()
                 handler.find(routes[self.path])
@@ -43,7 +43,7 @@ class Server(BaseHTTPRequestHandler):
                 handler = InfoHandler()
             else:
                 handler = BadRequestHandler()
-        elif req_extension is ".py":
+        elif req_extension == ".py":
             handler = BadRequestHandler()
         else:
             handler = StaticHandler()
@@ -58,7 +58,7 @@ class Server(BaseHTTPRequestHandler):
 
         self.send_response(status_code)
 
-        if status_code is 200:
+        if status_code == 200:
             content = handler.getContents()
             self.send_header('Content-type',handler.getContentType())
         else:
