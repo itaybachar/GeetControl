@@ -1,7 +1,7 @@
 # GeetControl
 Application to remotely control your computer from a browser
 
-#PIP Installation
+## PIP Installation
 - Make sure pip3 is installed on your system
 - run: ```pip3 install git+https://github.com/itaybachar/GeetControl.git```
 ## Source Installation
